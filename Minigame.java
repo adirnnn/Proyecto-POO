@@ -1,11 +1,5 @@
 import greenfoot.*;
 
-/**
- * Write a description of class Minigame here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Minigame extends World
 {
     private Jugador jugador;
@@ -14,7 +8,6 @@ public class Minigame extends World
      
     public Minigame()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         jugador = new Jugador();
         
@@ -23,7 +16,6 @@ public class Minigame extends World
         musiquitaFondo = new GreenfootSound("Nyancat.wav");
         GreenfootImage fondo = getBackground();
         fondo.scale(600, 400);
-        
     }
     public void started ()
     {
@@ -38,7 +30,6 @@ public class Minigame extends World
         if (Greenfoot.getRandomNumber(100) < 1) {
             addObject(new Pizza(), getWidth(), Greenfoot.getRandomNumber(getHeight()));
         }
-        
     }
     public void incrementarContadorElementos()
     {

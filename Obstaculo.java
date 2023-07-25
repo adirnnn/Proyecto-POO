@@ -1,19 +1,18 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Obstaculo here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Obstaculo extends Actor
 {
-    /**
-     * Act - do whatever the Obstaculo wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public Obstaculo()
+    {
+        GreenfootImage sprite = getImage();
+        sprite.scale(80, 80); 
+        setImage(sprite);
+    }
     public void act()
     {
-        // Add your action code here.
+        move(-3);
+        if (getX() == 0) {
+            getWorld().removeObject(this);
+        }
     }
 }

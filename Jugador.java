@@ -1,19 +1,42 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Jugador here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Jugador extends Actor
 {
-    /**
-     * Act - do whatever the Jugador wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public Jugador()
+    {
+        GreenfootImage imagenJugador = getImage();
+        imagenJugador.scale(64, 64);
+        setImage(imagenJugador);
+    }
     public void act()
     {
-        // Add your action code here.
+        if (Greenfoot.isKeyDown("w")) {
+            setLocation(getX(), getY() - 5);
+        }
+        if (Greenfoot.isKeyDown("s")) {
+            setLocation(getX(), getY() + 5);
+        }
+        if (Greenfoot.isKeyDown("a")) {
+            setLocation(getX() - 5, getY());
+        }
+        if (Greenfoot.isKeyDown("d")) {
+            setLocation(getX() + 5, getY());
+        }
+        verificarColision();
+    }
+    private void verificarColision()
+    {
+        Actor obstaculo = getOneIntersectingObject(Obstaculo.class);
+        Actor elemento = getOneIntersectingObject(Pizza.class);
+        if (obstaculo != null) {
+            getWorld().removeObject(obstaculo);
+            Greenfoot.stop();
+        }
+        
+        if (elemento != null) {
+            getWorld().removeObject(elemento);
+            Minigame mundo = (Minigame) getWorld();
+            mundo.incrementarContadorElementos();
+        }
     }
 }
