@@ -5,7 +5,7 @@ public class Obstaculo extends Actor
     public Obstaculo()
     {
         GreenfootImage sprite = getImage();
-        sprite.scale(80, 80); 
+        sprite.scale(60, 60); 
         setImage(sprite);
     }
     public void act()

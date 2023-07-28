@@ -2,11 +2,15 @@ import greenfoot.*;
 
 public class Jugador extends Actor
 {
+    private GreenfootSound sonidoColision;
+    
     public Jugador()
     {
         GreenfootImage imagenJugador = getImage();
         imagenJugador.scale(64, 64);
         setImage(imagenJugador);
+        
+        sonidoColision = new GreenfootSound("maincra.wav");
     }
     public void act()
     {
@@ -28,11 +32,14 @@ public class Jugador extends Actor
     {
         Actor obstaculo = getOneIntersectingObject(Obstaculo.class);
         Actor elemento = getOneIntersectingObject(Pizza.class);
+
         if (obstaculo != null) {
             getWorld().removeObject(obstaculo);
+            
+            sonidoColision.play(); // Reproducir el sonido de colisión
             Greenfoot.stop();
+            System.out.println("¡Perdiste! Explotaste a NyanCat :( .");
         }
-        
         if (elemento != null) {
             getWorld().removeObject(elemento);
             Minigame mundo = (Minigame) getWorld();
