@@ -16,14 +16,12 @@ public class Minigame extends World
         musiquitaFondo = new GreenfootSound("Nyancat.wav");
         GreenfootImage fondo = getBackground();
         fondo.scale(600, 400);
-        showText("¡Press ENTER to START!", 300, 300);
     }
-    public void started ()
+    public void started()
     {
         musiquitaFondo.playLoop();
     }
-    public void ended()
-    {
+    public void stopBackgroundMusic(){
         musiquitaFondo.stop();
     }
     public void act()
@@ -34,10 +32,6 @@ public class Minigame extends World
         
         if (Greenfoot.getRandomNumber(100) < 1) {
             addObject(new Pizza(), getWidth(), Greenfoot.getRandomNumber(getHeight()));
-        }
-        
-        if (Greenfoot.isKeyDown("enter")) {
-            Greenfoot.setWorld(new Minigame());
         }
     }
     public void incrementarContadorElementos()

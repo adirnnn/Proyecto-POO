@@ -36,7 +36,11 @@ public class Jugador extends Actor
         if (obstaculo != null) {
             getWorld().removeObject(obstaculo);
             
+            World world = getWorld();
             sonidoColision.play(); // Reproducir el sonido de colisión
+            if (world instanceof Minigame) {
+                ((Minigame) world).stopBackgroundMusic();
+            }
             Greenfoot.stop();
             System.out.println("¡Perdiste! Explotaste a NyanCat :( .");
         }
